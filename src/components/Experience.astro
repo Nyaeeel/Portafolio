@@ -1,0 +1,23 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Desarrollador Fullstack Junior",
+    company: "Grupo RVQ",
+    description:
+      "Desarollador de Software encargado de aplicaciones y soluciones varias, yendo desde administracion de activos, planillas, permisos legales, desarrollo de puntos de venta para facturacion de combustible o venta al publico de productos, etc.",
+    link: "https://leasingall.com/proyecto/grupo-rvq/",
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
