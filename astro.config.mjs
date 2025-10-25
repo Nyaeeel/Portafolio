@@ -5,6 +5,6 @@ import robotsTxt from "astro-robots-txt";
 export default defineConfig({
   site: "https://nyaeeel.github.io/Portafolio",
   base: "/Portafolio/",
+  outDir: "./docs",
   integrations: [tailwind(), robotsTxt()],
-  outDir: "./docs", // 👈 Esto indica dónde se genera el sitio para GitHub Pages
 });
