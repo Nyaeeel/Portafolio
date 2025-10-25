@@ -23,7 +23,8 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <!-- ViewTransitions deshabilitado para permitir scroll suave -->
+    <!-- <ViewTransitions /> -->
   </head>
 
   <body class="relative text-black dark:text-white">

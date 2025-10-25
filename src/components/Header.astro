@@ -47,10 +47,12 @@ const navItems = [
 </header>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  // Función para manejar el scroll suave y la navegación
+  function initNavigation() {
     const sections = document.querySelectorAll("section")
     const navItems = document.querySelectorAll("header nav a")
 
+    // Intersection Observer para resaltar el enlace activo
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -75,6 +77,22 @@ const navItems = [
       observer.observe(section)
     })
 
+    // Manejar clics en enlaces de navegación
+    navItems.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        const targetId = link.getAttribute('aria-label')
+        const targetSection = document.getElementById(targetId)
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      })
+    })
+
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
@@ -85,7 +103,13 @@ const navItems = [
         })
       }
     }
-  })
+  }
+
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener("DOMContentLoaded", initNavigation)
+  
+  // También inicializar en astro:page-load por si acaso
+  document.addEventListener("astro:page-load", initNavigation)
 </script>
 
 <style>
